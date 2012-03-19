@@ -1,0 +1,17 @@
+/* Alexey Novak, Yuriy Zenevich */
+/* March 2012 */
+
+/* Basically all CSS styles of all the views, divs, elements we have */
+/* All styles go here */
+
+.mainView {
+    background-color: blue;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+/* Our debug CSS for now so we can run this in browser */
+/*     height: 100%; */
+/*     width: 100%; */
+    height: 600px;
+    width: 1024px;
+}
