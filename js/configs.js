@@ -10,30 +10,33 @@ var notes = [
         pages : [
             {
                 note: "note1",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note2",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note3",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note4",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
         ],
-        numPages: 4,
         enabled: true
     },
     {
@@ -41,24 +44,26 @@ var notes = [
         pages : [
             {
                 note: "note1",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note2",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note3",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             }
         ],
-        numPages: 3,
         enabled: true
     },
     {
@@ -66,42 +71,47 @@ var notes = [
         pages : [
             {
                 note: "note1",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note2",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note3",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note4",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note5",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note6",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             }
         ],
-        numPages: 6,
         enabled: true
     },
     {
@@ -109,153 +119,623 @@ var notes = [
         pages : [
             {
                 note: "note1",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note2",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note3",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note4",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note5",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note6",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note7",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note8",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note9",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
                 note: "note10",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             }
         ],
-        numPages: 10,
         enabled: true
     },
     {
         name: "chemistry",
         pages : [
             {
+                note: "note1",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
+                note: "note2",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
+                note: "note3",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
+                note: "note4",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             },
             {
+                note: "note5",
+                shortDescription: "",
                 author: "Miroslaw Nawrot",
                 revision: "1.0",
                 enabled: true
             }
         ],
-        numPages: 5,
         enabled: true
     },
     {
+        pages : [
+            {
+                note: "note1",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note2",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            }
+        ],
         name: "conversion",
-        numPages: 2,
         enabled: true
     },
     {
         name: "french",
-        numPages: 3,
+        pages : [
+            {
+                note: "note1",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note2",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note3",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            }
+        ],
         enabled: true
     },
     {
         name: "geography",
-        numPages: 8,
+        pages : [
+            {
+                note: "note1",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note2",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note3",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note4",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note5",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note6",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note7",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note8",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            }
+        ],
         enabled: true
     },
     {
         name: "geometry",
-        numPages: 1,
+        pages : [
+            {
+                note: "note1",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            }
+        ],
         enabled: true
     },
     {
         name: "grammar",
-        numPages: 9,
+        pages : [
+            {
+                note: "note1",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note2",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note3",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note4",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note5",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note6",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note7",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note8",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note9",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            }
+        ],
         enabled: true
     },
     {
         name: "greek",
-        numPages: 6,
+        pages : [
+            {
+                note: "note1",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note2",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note3",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note4",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note5",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note6",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            }
+        ],
         enabled: true
     },
     {
         name: "literary",
-        numPages: 11,
+        pages : [
+            {
+                note: "note1",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note2",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note3",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note4",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note5",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note6",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note7",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note8",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note9",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note10",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note11",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            }
+        ],
         enabled: true
     },
     {
         name: "music",
-        numPages: 4,
+        pages : [
+            {
+                note: "note1",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note2",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note3",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note4",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            }
+        ],
         enabled: true
     },
     {
         name: "physics",
-        numPages: 8,
+        pages : [
+            {
+                note: "note1",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note2",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note3",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note4",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note5",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note6",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note7",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note8",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            }
+        ],
         enabled: true
     },
     {
         name: "spanish",
-        numPages: 4,
+        pages : [
+            {
+                note: "note1",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note2",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note3",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note4",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            }
+        ],
         enabled: true
     },
     {
         name: "trigonometry",
-        numPages: 7,
+        pages : [
+            {
+                note: "note1",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note2",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note3",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note4",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note5",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note6",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            },
+            {
+                note: "note7",
+                shortDescription: "",
+                author: "Miroslaw Nawrot",
+                revision: "1.0",
+                enabled: true
+            }
+        ],
         enabled: true
     },
 ];
