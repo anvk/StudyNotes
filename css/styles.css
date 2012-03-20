@@ -15,3 +15,12 @@
     height: 600px;
     width: 1024px;
 }
+
+.noteView {
+    background-color: yellow;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    display: table-cell;
+    max-height: 600px;
+}
