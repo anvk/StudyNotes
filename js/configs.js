@@ -1,4 +1,4 @@
-/* Alexey Novak, Yuriy Zenevich */
+/* Alexey Novak, Yura Zenevich */
 /* March 2012 */
 
 /* Start App configuration and the active state. Model part. */
