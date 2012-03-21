@@ -9,18 +9,25 @@
     position: absolute;
     left: 0px;
     top: 0px;
-/* Our debug CSS for now so we can run this in browser */
-/*     height: 100%; */
-/*     width: 100%; */
-    height: 600px;
-    width: 1024px;
+    height: 100%; 
+    width: 100%;
 }
 
-.noteView {
+.noteViews {
     background-color: yellow;
     position: relative;
     left: 0px;
     top: 0px;
-    display: table-cell;
-    max-height: 600px;
+    display: block;
+    width: 95%;
+    height: 100%;
+    text-align: center;
+}
+
+.noteView {
+    display: none;
+}
+
+.activeNote {
+    display: block;
 }
