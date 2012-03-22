@@ -3,24 +3,33 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="lib/jquery.mobile/jquery.mobile-1.0.1.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
     
     <!-- My includes go here -->
     <!-- Libs -->
-    <script src="lib/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/jquery/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/jquery.mobile/jquery.mobile-1.0.1.min.js" type="text/javascript" charset="utf-8"></script>
     
     <!-- JS -->
     <script src="js/configs.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/core.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/mainView.js" type="text/javascript" charset="utf-8"></script>
     
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
-    
     <title> StudyNotes </title>
 </head>
 <body onload="appBootstrap()">
-    <div class="mainView">
-        <div class="noteViews"> </div>
+    <div data-role="header" data-position="inline">
+        <a href="#" data-icon="star" class="ui-btn-left">Bookmark</a>
+        <h1>StudyNotes</h1>
+        <a href="#" data-icon="gear" class="ui-btn-right">Options</a>
+    </div>
+    <div data-role="content">
+        <div class="mainView">
+            <div class="noteViews"> </div>
+        </div>
     </div>
 </body>
 </html>
