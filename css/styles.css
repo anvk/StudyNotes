@@ -4,7 +4,6 @@
 /* Basically all CSS styles of all the views, divs, elements we have */
 /* All styles go here */
 
-/*
 .mainView {
     background-color: blue;
     position: absolute;
@@ -24,10 +23,7 @@
     height: 100%;
     text-align: center;
 }
-*/
-.input[type="search"] {
-    width: 40%;
-}
+
 .noteView {
     display: none;
 }
