@@ -29,20 +29,18 @@
         that.loadNotes = function() {
             var noteViewsSelector = ".noteViews";
             var globals = config.globals;
+            $.each(config.categories, function (i, category) {
 
-            for(var i=0; i < config.categories.length; i++) {
-                var category = config.categories[i];
                 // Add a selection of the category here to somewhere
+                $.each(category.notes, function (j, note) {
 
-                for(var j=0; j < category.notes.length; j++) {
-                    var note = category.notes[j];
-
-                    var noteView = $("<div />").append($("<img />").attr("src", 
-                            "".concat(globals.notePath, category.name,"/", note.name, globals.noteExtension)));
-
+                    var noteView = $("<div />").append($("<img />")
+                                               .attr("src", "".concat(globals.notePath, category.name,"/", note.name, globals.noteExtension)));
                     $(noteViewsSelector).append(noteView.addClass("".concat("noteView category-", category.name, "-", note.name)));
-                }
-            }
+
+                });
+
+            });
         };
 
         // Function which hides all notes and shows only an active one
