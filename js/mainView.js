@@ -19,28 +19,36 @@ function appBootstrap() {
     $(".noteViews").live('swipedown',function() {
         alert("Swiped Down");
         
-        core.changeCategory(true);
-        core.showCurrentScreen();
+        core.changeScreen({
+            type: "category",
+            next: true
+        });
     });
     
     $(".noteViews").live('swipeup',function() {
         alert("Swiped Up");
         
-        core.changeCategory(false);
-        core.showCurrentScreen();
+        core.changeScreen({
+            type: "category",
+            next: false
+        });
     });
     
     $(".noteViews").live('swipeleft',function() {
         alert("Swiped Left");
         
-        core.changeNote(false);
-        core.showCurrentScreen();
+        core.changeScreen({
+            type: "note",
+            next: true
+        });
     });
     
     $(".noteViews").live('swiperight',function() {
         alert("Swiped Right");
         
-        core.changeNote(true);
-        core.showCurrentScreen();
+        core.changeScreen({
+            type: "note",
+            next: false
+        });
     });
 };

@@ -52,40 +52,48 @@ var core = new function() {
         $("".concat(".category-", activeCategoryName, "-", activeNoteName)).addClass("activeNote");
     };
     
-    that.changeCategory = function(isNext, categoryIndex) {
-        
-        if (categoryIndex || categoryIndex === 0) {
-            config.currentState.currentScreen.categoryIndex = categoryIndex;
+    // Function which changes the currentScreen structure and forces a refresh of the screen
+    //
+    // It expects an object of type
+    // {
+    //   next - true/false defines an increment or a decrement for the changing screens
+    //   type - category/note defines how screen would be changed
+    // }
+    that.changeScreen = function (data) {
+        if(!!!data) {
             return;
         }
         
-        var numCategories = config.categories.length;
-        var currentCategoryIndex = config.currentState.currentScreen.categoryIndex;
+        data.type = (data.type === undefined) ? "" : data.type;
+        data.next = (data.next === undefined) ? true : data.next;
         
-        if (isNext) {
-            config.currentState.currentScreen.categoryIndex = (currentCategoryIndex === numCategories-1) ? 0 : ++currentCategoryIndex;
+        var currentScreen = config.currentState.currentScreen;
+        var index = 0;
+        var maxIndex = 0;
+        var newIndex = 0;
+        
+        if (data.type === "note") {
+            index = currentScreen.noteIndex;
+            maxIndex = config.categories[currentScreen.categoryIndex].notes.length - 1;
+        } else if (data.type === "category") {
+            index = currentScreen.categoryIndex;
+            maxIndex = config.categories.length - 1;
+        }
+        
+        if (data.next) {
+            newIndex = (index === maxIndex) ? 0 : ++index;
         } else {
-            config.currentState.currentScreen.categoryIndex = (currentCategoryIndex === 0) ? numCategories-1 : --currentCategoryIndex;
+            newIndex = (index === 0) ? maxIndex : --index;
         }
         
-        that.changeNote(true, 0);
-    };
-    
-    that.changeNote = function(isNext, noteIndex) {
-
-        if (noteIndex || noteIndex === 0) {
-            config.currentState.currentScreen.noteIndex = noteIndex;
-            return;
+        if (data.type === "note") {
+            config.currentState.currentScreen.noteIndex = newIndex;
+        } else if (data.type === "category") {
+            config.currentState.currentScreen.categoryIndex = newIndex;
+            config.currentState.currentScreen.noteIndex = 0;
         }
         
-        var numNotes = config.categories[config.currentState.currentScreen.categoryIndex].notes.length;
-        var currentNoteIndex = config.currentState.currentScreen.noteIndex;
-        
-        if (isNext) {
-            config.currentState.currentScreen.noteIndex = (currentNoteIndex === numNotes-1) ? 0 : ++currentNoteIndex;
-        } else {
-            config.currentState.currentScreen.noteIndex = (currentNoteIndex === 0) ? numNotes-1 : --currentNoteIndex;
-        }
+        that.showCurrentScreen();
     };
     
 };
