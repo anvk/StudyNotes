@@ -13,7 +13,8 @@
 
     window.appBootstrap = function () {
 
-        var core = studyNotes.core(studyNotes.config);
+        var core = studyNotes.core(studyNotes.config),
+            controlPanel = studyNotes.controlPanel(".controlPanel", studyNotes.config);
 
         // First set the debug settings
         core.setDebug();
