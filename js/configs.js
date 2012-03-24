@@ -4,15 +4,13 @@
 /* Start App configuration and the active state. Model part. */
 
 // Main array of the available notes to the App
-var config = new function() {
-    var that = this;
-    
-    that.globals = {
+var studyNotes = {};
+studyNotes.config = {
+    globals: {
         notePath: "notes/",
         noteExtension: ".png"
-    };
-    
-    that.categories = [
+    },
+    categories: [
         {
             name: "algebra",
             notes: [
@@ -43,7 +41,7 @@ var config = new function() {
                     author: "Miroslaw Nawrot",
                     revision: "1.0",
                     enabled: true
-                },
+                }
             ],
             enabled: true
         },
@@ -745,21 +743,19 @@ var config = new function() {
                 }
             ],
             enabled: true
-        },
-    ];
-
+        }
+    ],
     // Structure wich will contain all required data for the bookmarks
-    that.bookmarks = {
+    bookmarks: {
         notes: []
-    };
-    
+    },
     // Active state of the program
-    that.currentState = {
+    currentState: {
         debug: true,            // Debug flag (might need it or not)
         fullVersion: true,      // Indication if the app is the support version
         currentScreen : {       // Structure which tells us what is the current note
             categoryIndex: 0,
             noteIndex: 0
         }
-    };
+    }
 };
