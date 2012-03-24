@@ -13,5 +13,34 @@ function appBootstrap() {
     core.loadNotes();
     
     // Show only an active default note
-    core.showNote();
+    core.showCurrentScreen();
+    
+    // Add swipeEvents
+    $(".noteViews").live('swipedown',function() {
+        alert("Swiped Down");
+        
+        core.changeCategory(true);
+        core.showCurrentScreen();
+    });
+    
+    $(".noteViews").live('swipeup',function() {
+        alert("Swiped Up");
+        
+        core.changeCategory(false);
+        core.showCurrentScreen();
+    });
+    
+    $(".noteViews").live('swipeleft',function() {
+        alert("Swiped Left");
+        
+        core.changeNote(false);
+        core.showCurrentScreen();
+    });
+    
+    $(".noteViews").live('swiperight',function() {
+        alert("Swiped Right");
+        
+        core.changeNote(true);
+        core.showCurrentScreen();
+    });
 };

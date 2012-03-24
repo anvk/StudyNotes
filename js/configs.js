@@ -757,9 +757,9 @@ var config = new function() {
     that.currentState = {
         debug: true,            // Debug flag (might need it or not)
         fullVersion: true,      // Indication if the app is the support version
-        activeNote : {          // Structure which tells us what is the current note
-            category: "algebra",
-            note: "note1"
+        currentScreen : {       // Structure which tells us what is the current note
+            categoryIndex: 0,
+            noteIndex: 0
         }
     };
 };

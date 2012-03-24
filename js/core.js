@@ -40,12 +40,52 @@ var core = new function() {
     };
     
     // Function which hides all notes and shows only an active one
-    that.showNote = function() {
-        var noteViewSelector = ".noteViews";
-        var activeNote = config.currentState.activeNote;
+    that.showCurrentScreen = function() {
+        var noteViewSelector = ".noteView";
+        var currentScreen = config.currentState.currentScreen;
+        
+        var activeCategoryName = config.categories[currentScreen.categoryIndex].name;
+        var activeNoteName = config.categories[currentScreen.categoryIndex].notes[currentScreen.noteIndex].name;
         
         $(noteViewSelector).removeClass("activeNote");
         
-        $("".concat(".category-", activeNote.category, "-", activeNote.note)).addClass("activeNote");
+        $("".concat(".category-", activeCategoryName, "-", activeNoteName)).addClass("activeNote");
     };
+    
+    that.changeCategory = function(isNext, categoryIndex) {
+        
+        if (categoryIndex || categoryIndex === 0) {
+            config.currentState.currentScreen.categoryIndex = categoryIndex;
+            return;
+        }
+        
+        var numCategories = config.categories.length;
+        var currentCategoryIndex = config.currentState.currentScreen.categoryIndex;
+        
+        if (isNext) {
+            config.currentState.currentScreen.categoryIndex = (currentCategoryIndex === numCategories-1) ? 0 : ++currentCategoryIndex;
+        } else {
+            config.currentState.currentScreen.categoryIndex = (currentCategoryIndex === 0) ? numCategories-1 : --currentCategoryIndex;
+        }
+        
+        that.changeNote(true, 0);
+    };
+    
+    that.changeNote = function(isNext, noteIndex) {
+
+        if (noteIndex || noteIndex === 0) {
+            config.currentState.currentScreen.noteIndex = noteIndex;
+            return;
+        }
+        
+        var numNotes = config.categories[config.currentState.currentScreen.categoryIndex].notes.length;
+        var currentNoteIndex = config.currentState.currentScreen.noteIndex;
+        
+        if (isNext) {
+            config.currentState.currentScreen.noteIndex = (currentNoteIndex === numNotes-1) ? 0 : ++currentNoteIndex;
+        } else {
+            config.currentState.currentScreen.noteIndex = (currentNoteIndex === 0) ? numNotes-1 : --currentNoteIndex;
+        }
+    };
+    
 };

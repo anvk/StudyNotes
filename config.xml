@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" 
    xmlns:rim="http://www.blackberry.com/ns/widgets" 
-   version="0.1.0.0" rim:header="WebWorks Sample">
+   version="0.0.0.1" rim:header="WebWorks Sample">
 
    <name>StudyNotes</name>
+   <author>olek</author>
    <description>Blah</description>
    <content src="index.html"/>
 
