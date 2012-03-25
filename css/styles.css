@@ -23,6 +23,8 @@
     height: 100%;
 }
 .noteImage {
+    max-width: 973px; /* we need to find the way to express it in percentages */
+    max-height: 600px; /* we need to find the way to express it in percentages */
 }
 .noteView {
     display: none;
