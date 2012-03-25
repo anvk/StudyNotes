@@ -12,6 +12,40 @@ studyNotes.config = {
     },
     categories: [
         {
+            name: "_test",
+            notes: [
+                {
+                    name: "note1",
+                    shortDescription: "",
+                    author: "Miroslaw Nawrot",
+                    revision: "1.0",
+                    enabled: true
+                },
+                {
+                    name: "note2",
+                    shortDescription: "",
+                    author: "Miroslaw Nawrot",
+                    revision: "1.0",
+                    enabled: true
+                },
+                {
+                    name: "note3",
+                    shortDescription: "",
+                    author: "Miroslaw Nawrot",
+                    revision: "1.0",
+                    enabled: true
+                },
+                {
+                    name: "note4",
+                    shortDescription: "",
+                    author: "Miroslaw Nawrot",
+                    revision: "1.0",
+                    enabled: true
+                }
+            ],
+            enabled: true
+        },
+        {
             name: "algebra",
             notes: [
                 {
