@@ -13,24 +13,24 @@
     width: 100%;
     overflow: hidden;
 }
-
 .noteViews {
     background-color: yellow;
     position: relative;
     left: 0px;
     top: 0px;
-    display: block;
+    display: table;
     width: 95%;
     height: 100%;
-    text-align: center;
 }
-
+.noteImage {
+}
 .noteView {
     display: none;
 }
-
 .activeNote {
-    display: block;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }
 .controlPanel {
     background-color: red;

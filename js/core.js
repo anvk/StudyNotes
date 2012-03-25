@@ -35,7 +35,10 @@
                 $.each(category.notes, function (j, note) {
 
                     var noteView = $("<div />").append($("<img />")
-                                               .attr("src", "".concat(globals.notePath, category.name,"/", note.name, globals.noteExtension)));
+                                               .attr("src", "".concat(globals.notePath, category.name,"/", note.name, globals.noteExtension))
+                                               .addClass("noteImage"));
+/*                     var noteView = $("<div />").attr("background-image", "".concat(globals.notePath, category.name,"/", note.name, globals.noteExtension)); */
+                    
                     $(noteViewsSelector).append(noteView.addClass("".concat("noteView category-", category.name, "-", note.name)));
 
                 });
