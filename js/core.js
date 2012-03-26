@@ -33,14 +33,12 @@
 
                 // Add a selection of the category here to somewhere
                 $.each(category.notes, function (j, note) {
-
+                    // Create a div with a centered and scaled image inside
                     var noteView = $("<div />").append($("<img />")
                                                .attr("src", "".concat(globals.notePath, category.name,"/", note.name, globals.noteExtension))
                                                .addClass("noteImage"));
-/*                     var noteView = $("<div />").attr("background-image", "".concat(globals.notePath, category.name,"/", note.name, globals.noteExtension)); */
-                    
+                    // Add a class for every note so that we can find any note we want later on
                     $(noteViewsSelector).append(noteView.addClass("".concat("noteView category-", category.name, "-", note.name)));
-
                 });
 
             });
