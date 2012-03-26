@@ -65,18 +65,21 @@
         //   type - category/note defines how screen would be changed
         // }
         that.changeScreen = function (data) {
+            // If data is empty then just chill
             if(!!!data) {
                 return;
             }
-
+            
+            // Be default type is empty and by default the swipe movement bring next screen in the sequence
             data.type = (data.type === undefined) ? "" : data.type;
             data.next = (data.next === undefined) ? true : data.next;
-
+            
             var currentScreen = config.currentState.currentScreen;
             var index = 0;
             var maxIndex = 0;
             var newIndex = 0;
-
+            
+            // Get current index and max screen numbers depending on type
             if (data.type === "note") {
                 index = currentScreen.noteIndex;
                 maxIndex = config.categories[currentScreen.categoryIndex].notes.length - 1;
@@ -84,20 +87,23 @@
                 index = currentScreen.categoryIndex;
                 maxIndex = config.categories.length - 1;
             }
-
+            
+            // Calculate next item in the sequence. Remember that we are not stoping at the max and moving to 0
             if (data.next) {
                 newIndex = (index === maxIndex) ? 0 : ++index;
             } else {
                 newIndex = (index === 0) ? maxIndex : --index;
             }
-
+            
+            // Update current state
             if (data.type === "note") {
                 config.currentState.currentScreen.noteIndex = newIndex;
             } else if (data.type === "category") {
                 config.currentState.currentScreen.categoryIndex = newIndex;
                 config.currentState.currentScreen.noteIndex = 0;
             }
-
+            
+            // Update the screen
             that.showCurrentScreen();
         };
 
