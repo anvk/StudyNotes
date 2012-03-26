@@ -790,6 +790,7 @@ studyNotes.config = {
         currentScreen : {       // Structure which tells us what is the current note
             categoryIndex: 0,
             noteIndex: 0
-        }
+        },
+        noteInfoPopup: false
     }
 };

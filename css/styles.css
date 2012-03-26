@@ -21,12 +21,25 @@
     display: table;
     width: 95%;
     height: 100%;
+    float: left;
 }
 .noteImage {
     max-width: 973px; /* we need to find the way to express it in percentages */
     max-height: 600px; /* we need to find the way to express it in percentages */
 }
 .noteView {
+    display: none;
+}
+.noteInfoPopup {
+    width: 25%;
+    height: 15%;
+    background-color: black;
+    filter:alpha(opacity=60);-moz-opacity:.6;opacity:.6;
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    border-radius: 8px;
     display: none;
 }
 .activeNote {
