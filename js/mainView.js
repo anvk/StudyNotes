@@ -13,8 +13,10 @@
 
     window.appBootstrap = function () {
 
-        var core = studyNotes.core(studyNotes.config),
-            controlPanel = studyNotes.controlPanel(".controlPanel", studyNotes.config);
+        var config = studyNotes.config,
+            core = studyNotes.core(config),
+            controlPanel = studyNotes.controlPanel(".controlPanel", config),
+            noteInfoPopup = studyNotes.noteInfoPopup(".noteInfoPopup", config.globals);
 
         // First set the debug settings
         core.setDebug();
@@ -27,39 +29,47 @@
 
         // Add swipeEvents
         $(".noteViews").live('swipedown',function() {
-            alert("Swiped Down");
+            //alert("Swiped Down");
 
             core.changeScreen({
                 type: "category",
                 next: true
             });
+            
+            noteInfoPopup.showPopup();
         });
 
         $(".noteViews").live('swipeup',function() {
-            alert("Swiped Up");
+            //alert("Swiped Up");
 
             core.changeScreen({
                 type: "category",
                 next: false
             });
+            
+            noteInfoPopup.showPopup();
         });
 
         $(".noteViews").live('swipeleft',function() {
-            alert("Swiped Left");
+            //alert("Swiped Left");
 
             core.changeScreen({
                 type: "note",
                 next: true
             });
+            
+            noteInfoPopup.showPopup();
         });
 
         $(".noteViews").live('swiperight',function() {
-            alert("Swiped Right");
+            //alert("Swiped Right");
 
             core.changeScreen({
                 type: "note",
                 next: false
             });
+            
+            noteInfoPopup.showPopup();
         });
     };
 

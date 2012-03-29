@@ -8,7 +8,10 @@ var studyNotes = {};
 studyNotes.config = {
     globals: {
         notePath: "notes/",
-        noteExtension: ".png"
+        noteExtension: ".png",
+        noteInfoDelayShow: 2000,
+        noteInfoDelayHide: 2000,
+        noteInfoDelayBeforeHide: 2000
     },
     categories: [
         {
