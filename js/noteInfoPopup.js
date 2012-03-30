@@ -9,74 +9,44 @@
 
     "use strict";
 
-/*
-    studyNotes.noteInfoPopup = function (container, config) {
-        var that = studyNotes.createWidget(container);
-
-        buildMarkup(that);
-        setupNoteInfoPopup(that);
-
-        return that;
-    };
-
-    var buildMarkup = function (that) {
-        that.container.addClass("hidden");
-        that.panelPopupContainer = $("<div/>").addClass("noteInfoPopup");
-        that.container.append(that.panelPopupContainer);
-    };
-    
-    var setupNoteInfoPopup = function (that) {
-        that.panelPopup = studyNotes.noteInfoPopup.panel(that.panelPopupContainer);
-        that.visible = false;
-    };
-    
-    studyNotes.noteInfoPopup.panel = function (container) {
-        var that = studyNotes.createWidget(container);
-        return that;
-    };
-    
-    var hideShowInfoPopup = function (that, visible) {
-        if (!that.visible && visible) {
-            alert('1');
-        } else if (!that.visible && !visible) {
-            alert('2');
-        }
-    };
-*/
-
+    // constructor
     studyNotes.noteInfoPopup = function (container, config) {
         
+        // Main variables
         var that = {
             container: $(container),
-            fadingOut: false,
             noteInfoDelayShow: config.noteInfoDelayShow,
             noteInfoDelayHide: config.noteInfoDelayHide,
             noteInfoDelayBeforeHide: config.noteInfoDelayBeforeHide,
             beforeHideTimer: null
         };
         
+        // Function to start a process of showing a div on the screen
         that.showPopup = function () {
+            // Clear any timer is there is one
             clearTimeout(that.beforeHideTimer);
             that.beforeHideTimer = null;
             
-            var timeToFaidIn = that.noteInfoDelayShow;
+            var timeToFadeIn = that.noteInfoDelayShow;
             
-            if (that.fadingOut) {
-                that.fadingOut = false;
-                that.container.stop().show(1, that.waitBeforeHide);
-                timeToFaidIn = 1;
-                return;
+            // If there is an animation then just skip it and show the div
+            if (that.container.is(':animated')) {
+                // Stop any animation
+                that.container.stop(true);
+                
+                // get a proper time needed to complete animation
+                timeToFadeIn = ( (that.container.css("opacity") * 100) / 60 ) * timeToFadeIn;
             }
-               
-            that.container.fadeIn(timeToFaidIn, that.waitBeforeHide);
+            
+            // Show the div. Slowly or immediately
+            that.container.fadeTo(timeToFadeIn, .6, function () {
+                // set a timer to make the div to disappear
+                that.beforeHideTimer = setTimeout(that.hidePopup, that.noteInfoDelayBeforeHide);
+            });
         };
         
-        that.waitBeforeHide = function () {
-            that.beforeHideTimer = setTimeout(that.hidePopup, that.noteInfoDelayBeforeHide);
-        };
-        
+        // Function to start a process of hiding a div on the screen
         that.hidePopup = function () {
-            that.fadingOut = true;
             that.container.fadeOut(that.noteInfoDelayHide);
         };
         
