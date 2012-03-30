@@ -13,6 +13,18 @@
     studyNotes.core = function (config) {
         var that = {};
 
+        that.setDefaults = function() {
+            var currentScreen = config.currentState.currentScreen;
+            
+            if (!currentScreen.currentCategory) {
+                config.currentState.currentScreen.currentCategory = config.categories[currentScreen.categoryIndex];
+            }
+            
+            if (!currentScreen.currentNote) {
+                config.currentState.currentScreen.currentNote = config.currentState.currentScreen.currentCategory.notes[currentScreen.noteIndex];
+            }
+        };
+        
         // Function which sets interaction and view of the app to test in a browser
         that.setDebug = function() {
             if (!config.currentState.debug) {
@@ -95,9 +107,14 @@
 
             if (data.type === "note") {
                 config.currentState.currentScreen.noteIndex = newIndex;
+                
+                config.currentState.currentScreen.currentNote = config.categories[currentScreen.categoryIndex].notes[newIndex];
             } else if (data.type === "category") {
                 config.currentState.currentScreen.categoryIndex = newIndex;
                 config.currentState.currentScreen.noteIndex = 0;
+                
+                config.currentState.currentScreen.currentCategory = config.categories[newIndex];
+                config.currentState.currentScreen.currentNote = config.categories[newIndex].notes[0];
             }
 
             that.showCurrentScreen();

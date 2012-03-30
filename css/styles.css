@@ -14,7 +14,7 @@
     overflow: hidden;
 }
 .noteViews {
-    background-color: yellow;
+    background-color: white;
     position: relative;
     left: 0px;
     top: 0px;
@@ -31,16 +31,21 @@
     display: none;
 }
 .noteInfoPopup {
-    width: 25%;
-    height: 15%;
+    width: 23%;
+    height: 13%;
     background-color: black;
-    filter:alpha(opacity=60);-moz-opacity:.6;opacity:.6;
+/*     filter:alpha(opacity=60);-moz-opacity:.6;opacity:.6; */
     position: absolute;
     bottom: 0px;
     margin-bottom: 1%;
     margin-left: 1%;
     border-radius: 8px;
     display: none;
+    color: white;
+    padding: 1%;
+    font-size: 12px;
+    text-align: left;
+    overflow: hidden;
 }
 .activeNote {
     display: table-cell;
