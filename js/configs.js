@@ -8,7 +8,13 @@ var studyNotes = {};
 studyNotes.config = {
     globals: {
         notePath: "notes/",
-        noteExtension: ".png"
+        noteExtension: ".png",
+        noteInfo: {
+            delayShow: 2000,
+            delayHide: 2000,
+            delayBeforeHide: 2000,
+            opacity: 0.6
+        }
     },
     categories: [
         {
@@ -789,7 +795,10 @@ studyNotes.config = {
         fullVersion: true,      // Indication if the app is the support version
         currentScreen : {       // Structure which tells us what is the current note
             categoryIndex: 0,
-            noteIndex: 0
-        }
+            noteIndex: 0,
+            currentCategory: null,
+            currentNote: null
+        },
+        noteInfoPopup: false
     }
 };

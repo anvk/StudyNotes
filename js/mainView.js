@@ -13,11 +13,17 @@
 
     window.appBootstrap = function () {
 
-        var core = studyNotes.core(studyNotes.config),
-            controlPanel = studyNotes.controlPanel(".controlPanel", studyNotes.config);
+        var config = studyNotes.config,
+            core = studyNotes.core(config),
+            controlPanel = studyNotes.controlPanel(".controlPanel", config),
+            noteInfoPopup = studyNotes.noteInfoPopup(".noteInfoPopup", config.globals.noteInfo);
 
         // First set the debug settings
         core.setDebug();
+        
+        // Make any config/core preparations in advance
+        core.setDefaults();
+        noteInfoPopup.showPopup(config.currentState.currentScreen);
 
         // Create a markup for all notes
         core.loadNotes();
@@ -27,39 +33,43 @@
 
         // Add swipeEvents
         $(".noteViews").live('swipedown',function() {
-            alert("Swiped Down");
 
             core.changeScreen({
                 type: "category",
                 next: true
             });
+            
+            noteInfoPopup.showPopup(config.currentState.currentScreen);
         });
 
         $(".noteViews").live('swipeup',function() {
-            alert("Swiped Up");
 
             core.changeScreen({
                 type: "category",
                 next: false
             });
+            
+            noteInfoPopup.showPopup(config.currentState.currentScreen);
         });
 
         $(".noteViews").live('swipeleft',function() {
-            alert("Swiped Left");
-
-            core.changeScreen({
-                type: "note",
-                next: true
-            });
-        });
-
-        $(".noteViews").live('swiperight',function() {
-            alert("Swiped Right");
 
             core.changeScreen({
                 type: "note",
                 next: false
             });
+            
+            noteInfoPopup.showPopup(config.currentState.currentScreen);
+        });
+
+        $(".noteViews").live('swiperight',function() {
+
+            core.changeScreen({
+                type: "note",
+                next: true
+            });
+            
+            noteInfoPopup.showPopup(config.currentState.currentScreen);
         });
     };
 
