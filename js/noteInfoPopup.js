@@ -22,6 +22,9 @@
             beforeHideTimer: null
         };
         
+        // Function which will be called right before returning that
+        that.initComponent = function() {};
+        
         // Function to start a process of showing a div on the screen
         that.showPopup = function (currentScreen) {
             
@@ -72,6 +75,7 @@
             that.container.append($("<div/>").html("Revision: " + note.revision));
         };
         
+        that.initComponent();
         return that;
     };
 

@@ -10,8 +10,28 @@
 
     "use strict";
 
+    window.appBootstrap = function () {
+
+        var config = studyNotes.config,
+            core = studyNotes.core(config),
+            controlPanel = studyNotes.controlPanel(".controlPanel", config),
+            noteInfoPopup = studyNotes.noteInfoPopup(".noteInfoPopup", config.globals.noteInfo),
+            mainView = studyNotes.mainView(".mainView", config, noteInfoPopup);
+
+        noteInfoPopup.showPopup(config.currentState.currentScreen);
+    };
+
     studyNotes.core = function (config) {
         var that = {};
+        
+        // Function which will be called right before returning that
+        that.initComponent = function() {
+            // First set the debug settings
+            that.setDebug();
+            
+            // Make any config/core preparations in advance
+            that.setDefaults();
+        };
 
         that.setDefaults = function() {
             var currentScreen = config.currentState.currentScreen;
@@ -21,7 +41,7 @@
             }
             
             if (!currentScreen.currentNote) {
-                config.currentState.currentScreen.currentNote = config.currentState.currentScreen.currentCategory.notes[currentScreen.noteIndex];
+                config.currentState.currentScreen.currentNote = currentScreen.currentCategory.notes[currentScreen.noteIndex];
             }
         };
         
@@ -31,99 +51,14 @@
                 return;
             }
 
+            var debugConfig = config.globals.debugConfig;
             $(".mainView").css({
-                height: "600px",
-                width: "1024px"
+                height: debugConfig.height,
+                width: debugConfig.width
             });
         };
 
-        // Function which creates UI markup with notes based on the config
-        that.loadNotes = function() {
-            var noteViewsSelector = ".noteViews";
-            var globals = config.globals;
-            $.each(config.categories, function (i, category) {
-
-                // Add a selection of the category here to somewhere
-                $.each(category.notes, function (j, note) {
-                    // Create a div with a centered and scaled image inside
-                    var noteView = $("<div />").append($("<img />")
-                                               .attr("src", "".concat(globals.notePath, category.name,"/", note.name, globals.noteExtension))
-                                               .addClass("noteImage"));
-                    // Add a class for every note so that we can find any note we want later on
-                    $(noteViewsSelector).append(noteView.addClass("".concat("noteView category-", category.name, "-", note.name)));
-                });
-
-            });
-        };
-
-        // Function which hides all notes and shows only an active one
-        that.showCurrentScreen = function() {
-            var noteViewSelector = ".noteView";
-            var currentScreen = config.currentState.currentScreen;
-
-            var activeCategoryName = config.categories[currentScreen.categoryIndex].name;
-            var activeNoteName = config.categories[currentScreen.categoryIndex].notes[currentScreen.noteIndex].name;
-
-            $(noteViewSelector).removeClass("activeNote");
-
-            $("".concat(".category-", activeCategoryName, "-", activeNoteName)).addClass("activeNote");
-        };
-
-        // Function which changes the currentScreen structure and forces a refresh of the screen
-        //
-        // It expects an object of type
-        // {
-        //   next - true/false defines an increment or a decrement for the changing screens
-        //   type - category/note defines how screen would be changed
-        // }
-        that.changeScreen = function (data) {
-            // If data is empty then just chill
-            if(!!!data) {
-                return;
-            }
-            
-            // Be default type is empty and by default the swipe movement bring next screen in the sequence
-            data.type = (data.type === undefined) ? "" : data.type;
-            data.next = (data.next === undefined) ? true : data.next;
-            
-            var currentScreen = config.currentState.currentScreen;
-            var index = 0;
-            var maxIndex = 0;
-            var newIndex = 0;
-            
-            // Get current index and max screen numbers depending on type
-            if (data.type === "note") {
-                index = currentScreen.noteIndex;
-                maxIndex = config.categories[currentScreen.categoryIndex].notes.length - 1;
-            } else if (data.type === "category") {
-                index = currentScreen.categoryIndex;
-                maxIndex = config.categories.length - 1;
-            }
-            
-            // Calculate next item in the sequence. Remember that we are not stoping at the max and moving to 0
-            if (data.next) {
-                newIndex = (index === maxIndex) ? 0 : ++index;
-            } else {
-                newIndex = (index === 0) ? maxIndex : --index;
-            }
-            
-            // Update current state
-            if (data.type === "note") {
-                config.currentState.currentScreen.noteIndex = newIndex;
-                
-                config.currentState.currentScreen.currentNote = config.categories[currentScreen.categoryIndex].notes[newIndex];
-            } else if (data.type === "category") {
-                config.currentState.currentScreen.categoryIndex = newIndex;
-                config.currentState.currentScreen.noteIndex = 0;
-                
-                config.currentState.currentScreen.currentCategory = config.categories[newIndex];
-                config.currentState.currentScreen.currentNote = config.categories[newIndex].notes[0];
-            }
-            
-            // Update the screen
-            that.showCurrentScreen();
-        };
-
+        that.initComponent();
         return that;
     };
 
