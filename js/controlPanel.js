@@ -1,8 +1,7 @@
 /* Alexey Novak, Yura Zenevich */
 /* March 2012 */
 
-/* Main functionality of the application. */
-/* All calculations and config modifications go here */
+/* Control panel for StudyNotes */
 
 /*global jQuery, studyNotes*/
 
@@ -10,41 +9,22 @@
 
     "use strict";
 
-    var setupStudyNotes = function (that) {
-        that.panel = studyNotes.controlPanel.panel(that.panelContainer);
-        that.latch = studyNotes.controlPanel.latch(that.latchContainer);
-    };
-
-    var buildMarkup = function (that) {
-        that.container.addClass("hidden");
-        that.panelContainer = $("<div/>").addClass("controlPanel-panel");
-        that.latchContainer = $("<div/>").addClass("controlPanel-latch");
-        that.container.append(that.panelContainer);
-        that.container.prepend(that.latchContainer);
-    };
-
-    studyNotes.createWidget = function (container) {
-        return {
+    // constructor
+    studyNotes.controlPanel = function (container, config) {
+        
+        // Main variables
+        var that = {
             container: $(container)
         };
-    };
-
-    studyNotes.controlPanel = function (container, config) {
-        var that = studyNotes.createWidget(container);
-
-        buildMarkup(that);
-        setupStudyNotes(that);
-
-        return that;
-    };
-
-    studyNotes.controlPanel.panel = function (container) {
-        var that = studyNotes.createWidget(container);
-        return that;
-    };
-
-    studyNotes.controlPanel.latch = function (container) {
-        var that = studyNotes.createWidget(container);
+        
+        // Function which will be called right before returning that
+        that.initComponent = function() {
+            that.container.click(function(){
+                that.container.animate({right: "0px"}, {queue:false, duration:3000});
+            });
+        };
+                
+        that.initComponent();
         return that;
     };
 

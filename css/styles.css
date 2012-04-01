@@ -19,12 +19,12 @@
     left: 0px;
     top: 0px;
     display: table;
-    width: 95%;
+    width: 97%;
     height: 100%;
     float: left;
 }
 .noteImage {
-    max-width: 973px; /* we need to find the way to express it in percentages */
+    max-width: 992px; /* we need to find the way to express it in percentages */
     max-height: 600px; /* we need to find the way to express it in percentages */
 }
 .noteView {
@@ -58,12 +58,6 @@
     top: 0px;
     z-index: 100;
     position: absolute;
-    width: 40px;
+    width: 250px;
     height: 100%;
-}
-.controlPanel.hidden {
-    right: -35px;
-}
-.controlPanel {
-    right: 0px;
 }
