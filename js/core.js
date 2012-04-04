@@ -34,6 +34,10 @@
         };
 
         that.setDefaults = function() {
+            // Remove JQuery loading page
+            $(".ui-loader").css({ "display": "none" });
+            $(".ui-page").css({ "min-height": "550px" });
+
             var currentScreen = config.currentState.currentScreen;
             
             if (!currentScreen.currentCategory) {

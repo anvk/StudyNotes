@@ -3,9 +3,8 @@
 
 /* Basically all CSS styles of all the views, divs, elements we have */
 /* All styles go here */
-
 .mainView {
-    background-color: blue;
+    background-color: white;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -26,6 +25,7 @@
 .noteImage {
     max-width: 992px; /* we need to find the way to express it in percentages */
     max-height: 600px; /* we need to find the way to express it in percentages */
+    pointer-events:none;
 }
 .noteView {
     display: none;
