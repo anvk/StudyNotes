@@ -8,6 +8,8 @@ var studyNotes = {};
 studyNotes.config = {
     globals: {
         notePath: "notes/",
+        imagePath: "images/",
+        imageExtension: ".png",
         noteExtension: ".png",
         noteInfo: {
             delayShow: 2000,
@@ -17,6 +19,9 @@ studyNotes.config = {
         },
         mainView: {
             noteViewsSelector: "noteViews"
+        },
+        controlPanel: {
+            slideImageButtonClass: "slideButtonImage"
         },
         debugConfig: {
             width: "1024px",

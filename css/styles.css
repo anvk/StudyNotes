@@ -53,11 +53,33 @@
     vertical-align: middle;
 }
 .controlPanel {
-    background-color: red;
+    background-color: #efefef;
     display: inline;
-    top: 0px;
+    top: 5px;
+    right: -220px;
     z-index: 100;
     position: absolute;
     width: 250px;
-    height: 100%;
+    height: 97%;
+    -moz-box-shadow: -5px 5px 5px #888;
+    -webkit-box-shadow: -5px 5px 5px #888;
+    box-shadow: -5px 5px 5px #888;
+    border-radius: 8px;
+}
+.slideButton {
+    top: 10px;
+    left: 0px;
+    position: relative;
+/*     background-color: orange; */
+    width: 30px;
+    height: 30px;
+    border-top-style: inset;
+    border-right-style: inset;
+    border-bottom-style: inset;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    
+}
+.slideButtonImage {
 }

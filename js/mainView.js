@@ -10,13 +10,14 @@
     "use strict";
 
     // constructor
-    studyNotes.mainView = function (container, config, noteInfoPopup) {
+    studyNotes.mainView = function (container, config, noteInfoPopup, controlPanel) {
         
         // Main variables
         var that = {
             container: $(container),
             notesViewContainer: $("." + config.globals.mainView.noteViewsSelector),
-            noteInfoPopup: noteInfoPopup
+            noteInfoPopup: noteInfoPopup,
+            controlPanel: controlPanel
         };
         
         // Function which will be called right before returning that
@@ -36,6 +37,7 @@
                 });
                 
                 noteInfoPopup.showPopup(config.currentState.currentScreen);
+                controlPanel.slideIn();
             });
     
             that.notesViewContainer.live('swipeup',function() {
@@ -46,6 +48,7 @@
                 });
                 
                 noteInfoPopup.showPopup(config.currentState.currentScreen);
+                controlPanel.slideIn();
             });
     
             that.notesViewContainer.live('swipeleft',function() {
@@ -56,6 +59,7 @@
                 });
                 
                 noteInfoPopup.showPopup(config.currentState.currentScreen);
+                controlPanel.slideIn();
             });
     
             that.notesViewContainer.live('swiperight',function() {
@@ -66,6 +70,7 @@
                 });
                 
                 noteInfoPopup.showPopup(config.currentState.currentScreen);
+                controlPanel.slideIn();
             });
         };
         

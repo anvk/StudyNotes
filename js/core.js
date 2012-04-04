@@ -14,9 +14,9 @@
 
         var config = studyNotes.config,
             core = studyNotes.core(config),
-            controlPanel = studyNotes.controlPanel(".controlPanel", config),
+            controlPanel = studyNotes.controlPanel(".controlPanel", config.globals),
             noteInfoPopup = studyNotes.noteInfoPopup(".noteInfoPopup", config.globals.noteInfo),
-            mainView = studyNotes.mainView(".mainView", config, noteInfoPopup);
+            mainView = studyNotes.mainView(".mainView", config, noteInfoPopup, controlPanel);
 
         noteInfoPopup.showPopup(config.currentState.currentScreen);
     };

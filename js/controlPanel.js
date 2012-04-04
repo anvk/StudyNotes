@@ -14,16 +14,50 @@
         
         // Main variables
         var that = {
-            container: $(container)
+            container: $(container),
+            slideImageButtonClass: config.controlPanel.slideImageButtonClass,
+            slideButton: null,
+            strings: {
+                slideImageButtonSlideOut: "".concat(config.imagePath, "slideOut", config.noteExtension),
+                slideImageButtonSlideIn: "".concat(config.imagePath, "slideIn", config.noteExtension)
+            }
         };
         
         // Function which will be called right before returning that
         that.initComponent = function() {
-            that.container.click(function(){
-                that.container.animate({right: "0px"}, {queue:false, duration:3000});
-            });
+            var slideButton = $("<div />", {"class": "slideButton"});
+            
+            slideButton.append($("<div />", {
+                    "css": {
+                        "vertical-align": "middle",
+                        "text-align": "center",
+                        "display": "table-cell",
+                        "width": "30px",
+                        "height": "30px"
+                    }
+                }).append($("<img />", {
+                    "class": that.slideImageButtonClass,
+                    "src": that.strings.slideImageButtonSlideOut
+                }))
+            );
+            
+            that.container.append(slideButton);
+            
+            that.container.click(that.slideOut);
+            
+            that.slideButton = slideButton;
         };
-                
+        
+        that.slideOut = function() {
+            that.container.animate({right: "-10px"}, {queue:false, duration:2000});
+            $("." + that.slideImageButtonClass).attr("src", that.strings.slideImageButtonSlideIn);
+        };
+        
+        that.slideIn = function() {
+            that.container.animate({right: "-220px"}, {queue:false, duration:2000});
+            $("." + that.slideImageButtonClass).attr("src", that.strings.slideImageButtonSlideOut);
+        };
+        
         that.initComponent();
         return that;
     };
