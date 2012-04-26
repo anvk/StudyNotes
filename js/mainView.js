@@ -10,15 +10,16 @@
     "use strict";
 
     // constructor
-    studyNotes.mainView = function (container, config, noteInfoPopup, controlPanel) {
+    studyNotes.mainView = function (config, stuff) {
         
         // Main variables
         var that = {
-            container: $(container),
-            notesViewContainer: $("." + config.globals.mainView.noteViewsSelector),
-            noteInfoPopup: noteInfoPopup,
-            controlPanel: controlPanel
+            notesViewContainer: $("." + stuff.globals.mainView.noteViewsSelector),
+            noteInfoPopup: config.noteInfoPopup,
+            controlPanel: config.controlPanel
         };
+        
+        that = $.extend(config, that);
         
         // Function which will be called right before returning that
         that.initComponent = function() {
@@ -36,8 +37,8 @@
                     next: true
                 });
                 
-                noteInfoPopup.showPopup(config.currentState.currentScreen);
-                controlPanel.slideIn();
+                that.noteInfoPopup.showPopup(stuff.currentState.currentScreen);
+                that.controlPanel.slideIn();
             });
     
             that.notesViewContainer.live('swipeup',function() {
@@ -47,8 +48,8 @@
                     next: false
                 });
                 
-                noteInfoPopup.showPopup(config.currentState.currentScreen);
-                controlPanel.slideIn();
+                that.noteInfoPopup.showPopup(stuff.currentState.currentScreen);
+                that.controlPanel.slideIn();
             });
     
             that.notesViewContainer.live('swipeleft',function() {
@@ -58,8 +59,8 @@
                     next: false
                 });
                 
-                noteInfoPopup.showPopup(config.currentState.currentScreen);
-                controlPanel.slideIn();
+                that.noteInfoPopup.showPopup(stuff.currentState.currentScreen);
+                that.controlPanel.slideIn();
             });
     
             that.notesViewContainer.live('swiperight',function() {
@@ -69,15 +70,15 @@
                     next: true
                 });
                 
-                noteInfoPopup.showPopup(config.currentState.currentScreen);
-                controlPanel.slideIn();
+                that.noteInfoPopup.showPopup(stuff.currentState.currentScreen);
+                that.controlPanel.slideIn();
             });
         };
         
-        // Function which creates UI markup with notes based on the config
+        // Function which creates UI markup with notes based on the stuff
         that.loadNotes = function() {
-            var globals = config.globals;
-            $.each(config.categories, function (i, category) {
+            var globals = stuff.globals;
+            $.each(stuff.categories, function (i, category) {
 
                 // Add a selection of the category here to somewhere
                 $.each(category.notes, function (j, note) {
@@ -94,10 +95,10 @@
         // Function which hides all notes and shows only an active one
         that.showCurrentScreen = function() {
             var noteViewSelector = ".noteView";
-            var currentScreen = config.currentState.currentScreen;
+            var currentScreen = stuff.currentState.currentScreen;
 
-            var activeCategoryName = config.categories[currentScreen.categoryIndex].name;
-            var activeNoteName = config.categories[currentScreen.categoryIndex].notes[currentScreen.noteIndex].name;
+            var activeCategoryName = stuff.categories[currentScreen.categoryIndex].name;
+            var activeNoteName = stuff.categories[currentScreen.categoryIndex].notes[currentScreen.noteIndex].name;
 
             $(noteViewSelector).removeClass("activeNote");
 
@@ -121,7 +122,7 @@
             data.type = (data.type === undefined) ? "" : data.type;
             data.next = (data.next === undefined) ? true : data.next;
             
-            var currentScreen = config.currentState.currentScreen;
+            var currentScreen = stuff.currentState.currentScreen;
             var index = 0;
             var maxIndex = 0;
             var newIndex = 0;
@@ -129,10 +130,10 @@
             // Get current index and max screen numbers depending on type
             if (data.type === "note") {
                 index = currentScreen.noteIndex;
-                maxIndex = config.categories[currentScreen.categoryIndex].notes.length - 1;
+                maxIndex = stuff.categories[currentScreen.categoryIndex].notes.length - 1;
             } else if (data.type === "category") {
                 index = currentScreen.categoryIndex;
-                maxIndex = config.categories.length - 1;
+                maxIndex = stuff.categories.length - 1;
             }
             
             // Calculate next item in the sequence. Remember that we are not stoping at the max and moving to 0
@@ -144,15 +145,15 @@
             
             // Update current state
             if (data.type === "note") {
-                config.currentState.currentScreen.noteIndex = newIndex;
+                stuff.currentState.currentScreen.noteIndex = newIndex;
                 
-                config.currentState.currentScreen.currentNote = config.categories[currentScreen.categoryIndex].notes[newIndex];
+                stuff.currentState.currentScreen.currentNote = stuff.categories[currentScreen.categoryIndex].notes[newIndex];
             } else if (data.type === "category") {
-                config.currentState.currentScreen.categoryIndex = newIndex;
-                config.currentState.currentScreen.noteIndex = 0;
+                stuff.currentState.currentScreen.categoryIndex = newIndex;
+                stuff.currentState.currentScreen.noteIndex = 0;
                 
-                config.currentState.currentScreen.currentCategory = config.categories[newIndex];
-                config.currentState.currentScreen.currentNote = config.categories[newIndex].notes[0];
+                stuff.currentState.currentScreen.currentCategory = stuff.categories[newIndex];
+                stuff.currentState.currentScreen.currentNote = stuff.categories[newIndex].notes[0];
             }
             
             // Update the screen

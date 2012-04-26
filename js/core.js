@@ -14,9 +14,17 @@
 
         var config = studyNotes.config,
             core = studyNotes.core(config),
-            controlPanel = studyNotes.controlPanel(".controlPanel", config.globals),
-            noteInfoPopup = studyNotes.noteInfoPopup(".noteInfoPopup", config.globals.noteInfo),
-            mainView = studyNotes.mainView(".mainView", config, noteInfoPopup, controlPanel);
+            controlPanel = studyNotes.controlPanel({
+                container: $(".controlPanel")
+            }, config.globals),
+            noteInfoPopup = studyNotes.noteInfoPopup({ 
+                container: $(".noteInfoPopup")
+            }, config.globals.noteInfo),
+            mainView = studyNotes.mainView({
+                container: $(".mainView"),
+                noteInfoPopup: noteInfoPopup,
+                controlPanel: controlPanel
+            }, config);
 
         noteInfoPopup.showPopup(config.currentState.currentScreen);
     };

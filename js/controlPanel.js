@@ -10,18 +10,19 @@
     "use strict";
 
     // constructor
-    studyNotes.controlPanel = function (container, config) {
+    studyNotes.controlPanel = function (config, stuff) {
         
         // Main variables
         var that = {
-            container: $(container),
-            slideImageButtonClass: config.controlPanel.slideImageButtonClass,
+            slideImageButtonClass: stuff.controlPanel.slideImageButtonClass,
             slideButton: null,
             strings: {
-                slideImageButtonSlideOut: "".concat(config.imagePath, "slideOut", config.noteExtension),
-                slideImageButtonSlideIn: "".concat(config.imagePath, "slideIn", config.noteExtension)
+                slideImageButtonSlideOut: "".concat(stuff.imagePath, "slideOut", stuff.noteExtension),
+                slideImageButtonSlideIn: "".concat(stuff.imagePath, "slideIn", stuff.noteExtension)
             }
         };
+        
+        that = $.extend(config, that);
         
         // Function which will be called right before returning that
         that.initComponent = function() {

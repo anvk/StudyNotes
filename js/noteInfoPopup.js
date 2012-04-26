@@ -10,17 +10,18 @@
     "use strict";
 
     // constructor
-    studyNotes.noteInfoPopup = function (container, config) {
+    studyNotes.noteInfoPopup = function (config, stuff) {
         
         // Main variables
         var that = {
-            container: $(container),
-            delayShow: config.delayShow,
-            delayHide: config.delayHide,
-            delayBeforeHide: config.delayBeforeHide,
-            opacity: config.opacity,
+            delayShow: stuff.delayShow,
+            delayHide: stuff.delayHide,
+            delayBeforeHide: stuff.delayBeforeHide,
+            opacity: stuff.opacity,
             beforeHideTimer: null
         };
+        
+        that = $.extend(config, that);
         
         // Function which will be called right before returning that
         that.initComponent = function() {};
