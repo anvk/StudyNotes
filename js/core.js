@@ -14,14 +14,27 @@
 
         var config = studyNotes.config,
             core = studyNotes.core(config),
+            
             controlPanel = studyNotes.controlPanel({
-                container: $(".controlPanel")
-            }, config.globals),
+                container: $(".controlPanel"),
+                slideImageButtonClass: "slideButtonImage",
+                strings: {
+                    slideImageButtonSlideOut: "".concat(config.globals.imagePath, "slideOut", config.globals.noteExtension),
+                    slideImageButtonSlideIn: "".concat(config.globals.imagePath, "slideIn", config.globals.noteExtension)
+                }
+            }),
+            
             noteInfoPopup = studyNotes.noteInfoPopup({ 
-                container: $(".noteInfoPopup")
-            }, config.globals.noteInfo),
+                container: $(".noteInfoPopup"),
+                delayShow: 2000,
+                delayHide: 2000,
+                delayBeforeHide: 2000,
+                opacity: 0.6
+            }),
+            
             mainView = studyNotes.mainView({
                 container: $(".mainView"),
+                notesViewContainer: $(".noteViews"),
                 noteInfoPopup: noteInfoPopup,
                 controlPanel: controlPanel
             }, config);

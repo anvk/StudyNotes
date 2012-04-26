@@ -10,14 +10,10 @@
     "use strict";
 
     // constructor
-    studyNotes.noteInfoPopup = function (config, stuff) {
+    studyNotes.noteInfoPopup = function (config) {
         
-        // Main variables
+        // Component variables
         var that = {
-            delayShow: stuff.delayShow,
-            delayHide: stuff.delayHide,
-            delayBeforeHide: stuff.delayBeforeHide,
-            opacity: stuff.opacity,
             beforeHideTimer: null
         };
         

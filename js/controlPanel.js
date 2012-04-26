@@ -14,12 +14,7 @@
         
         // Main variables
         var that = {
-            slideImageButtonClass: stuff.controlPanel.slideImageButtonClass,
-            slideButton: null,
-            strings: {
-                slideImageButtonSlideOut: "".concat(stuff.imagePath, "slideOut", stuff.noteExtension),
-                slideImageButtonSlideIn: "".concat(stuff.imagePath, "slideIn", stuff.noteExtension)
-            }
+            slideButton: null
         };
         
         that = $.extend(config, that);

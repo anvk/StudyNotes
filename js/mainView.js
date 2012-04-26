@@ -13,11 +13,7 @@
     studyNotes.mainView = function (config, stuff) {
         
         // Main variables
-        var that = {
-            notesViewContainer: $("." + stuff.globals.mainView.noteViewsSelector),
-            noteInfoPopup: config.noteInfoPopup,
-            controlPanel: config.controlPanel
-        };
+        var that = {};
         
         that = $.extend(config, that);
         

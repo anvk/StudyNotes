@@ -11,18 +11,6 @@ studyNotes.config = {
         imagePath: "images/",
         imageExtension: ".png",
         noteExtension: ".png",
-        noteInfo: {
-            delayShow: 2000,
-            delayHide: 2000,
-            delayBeforeHide: 2000,
-            opacity: 0.6
-        },
-        mainView: {
-            noteViewsSelector: "noteViews"
-        },
-        controlPanel: {
-            slideImageButtonClass: "slideButtonImage"
-        },
         debugConfig: {
             width: "1024px",
             height: "600px"
