@@ -25,65 +25,62 @@
             // Show only an active default note
             that.showCurrentScreen();
             
+            var typeCategory = that.strings.types.category,
+                typeNote = that.strings.types.note;
+            
             // Add swipeEvents
             that.notesViewContainer.live('swipedown',function() {
-    
-                that.changeScreen({
-                    type: "category",
+                that.doSlide({
+                    type: typeCategory,
                     next: true
                 });
-                
-                that.noteInfoPopup.showPopup(that.currentScreen);
-                that.controlPanel.slideIn();
             });
     
             that.notesViewContainer.live('swipeup',function() {
-    
-                that.changeScreen({
-                    type: "category",
+                that.doSlide({
+                    type: typeCategory,
                     next: false
                 });
-                
-                that.noteInfoPopup.showPopup(that.currentScreen);
-                that.controlPanel.slideIn();
             });
     
             that.notesViewContainer.live('swipeleft',function() {
-    
-                that.changeScreen({
-                    type: "note",
+                that.doSlide({
+                    type: typeNote,
                     next: false
                 });
-                
-                that.noteInfoPopup.showPopup(that.currentScreen);
-                that.controlPanel.slideIn();
             });
     
             that.notesViewContainer.live('swiperight',function() {
-    
-                that.changeScreen({
-                    type: "note",
+                that.doSlide({
+                    type: typeNote,
                     next: true
                 });
-                
-                that.noteInfoPopup.showPopup(that.currentScreen);
-                that.controlPanel.slideIn();
             });
+        };
+        
+        that.doSlide = function (data) {
+            that.changeScreen(data);
+            that.noteInfoPopup.showPopup(that.currentScreen);
+            that.controlPanel.slideIn();
         };
         
         // Function which creates UI markup with notes based on the stuff
         that.loadNotes = function() {
-            var strings = that.strings;
+            var notePath = that.strings.notePath,
+                noteExtension = that.strings.noteExtension,
+                noteImageStyle = that.styles.noteImage,
+                noteViewStyle = that.styles.noteView;
+            
             $.each(that.categories, function (i, category) {
 
                 // Add a selection of the category here to somewhere
                 $.each(category.notes, function (j, note) {
                     // Create a div with a centered and scaled image inside
                     var noteView = $("<div />").append($("<img />")
-                                               .attr("src", "".concat(strings.notePath, category.name,"/", note.name, strings.noteExtension))
-                                               .addClass("noteImage"));
+                                               .attr("src", "".concat(notePath, category.name, "/", note.name, noteExtension))
+                                               .addClass(noteImageStyle));
                     // Add a class for every note so that we can find any note we want later on
-                    that.notesViewContainer.append(noteView.addClass("".concat("noteView category-", category.name, "-", note.name)));
+                    that.notesViewContainer.append(noteView.addClass("".concat(noteViewStyle , " category-", category.name, "-", note.name)));
                 });
             });
         };
@@ -95,9 +92,9 @@
             var activeCategoryName = that.categories[that.currentScreen.categoryIndex].name;
             var activeNoteName = that.categories[that.currentScreen.categoryIndex].notes[that.currentScreen.noteIndex].name;
 
-            $(noteViewSelector).removeClass("activeNote");
+            $(noteViewSelector).removeClass(that.styles.activeNote);
 
-            $("".concat(".category-", activeCategoryName, "-", activeNoteName)).addClass("activeNote");
+            $("".concat(".category-", activeCategoryName, "-", activeNoteName)).addClass(that.styles.activeNote);
         };
         
         // Function which changes the currentScreen structure and forces a refresh of the screen
@@ -113,41 +110,46 @@
                 return;
             }
             
-            // Be default type is empty and by default the swipe movement bring next screen in the sequence
-            data.type = (data.type === undefined) ? "" : data.type;
-            data.next = (data.next === undefined) ? true : data.next;
+            var currentScreen = that.currentScreen,
+                categories = that.categories,
+                index = 0,
+                maxIndex = 0,
+                newIndex = 0,
+                next = data.next,
+                type = data.type,
+                currentNotes = categories[currentScreen.categoryIndex].notes,
+                typeCategory = that.strings.types.category,
+                typeNote = that.strings.types.note;
             
-            var index = 0;
-            var maxIndex = 0;
-            var newIndex = 0;
+            // Be default type is empty and by default the swipe movement bring next screen in the sequence
+            type = (type === undefined) ? "" : type;
+            next = (next === undefined) ? true : next;
             
             // Get current index and max screen numbers depending on type
-            if (data.type === "note") {
-                index = that.currentScreen.noteIndex;
-                maxIndex = that.categories[that.currentScreen.categoryIndex].notes.length - 1;
-            } else if (data.type === "category") {
-                index = that.currentScreen.categoryIndex;
-                maxIndex = that.categories.length - 1;
+            if (type === typeNote) {
+                index = currentScreen.noteIndex;
+                maxIndex = currentNotes.length - 1;
+            } else if (type === typeCategory) {
+                index = currentScreen.categoryIndex;
+                maxIndex = categories.length - 1;
             }
             
             // Calculate next item in the sequence. Remember that we are not stoping at the max and moving to 0
-            if (data.next) {
+            if (next) {
                 newIndex = (index === maxIndex) ? 0 : ++index;
             } else {
                 newIndex = (index === 0) ? maxIndex : --index;
             }
             
             // Update current state
-            if (data.type === "note") {
-                that.currentScreen.noteIndex = newIndex;
-                
-                that.currentScreen.currentNote = that.categories[that.currentScreen.categoryIndex].notes[newIndex];
-            } else if (data.type === "category") {
-                that.currentScreen.categoryIndex = newIndex;
-                that.currentScreen.noteIndex = 0;
-                
-                that.currentScreen.currentCategory = that.categories[newIndex];
-                that.currentScreen.currentNote = that.categories[newIndex].notes[0];
+            if (type === typeNote) {
+                currentScreen.noteIndex = newIndex;
+                currentScreen.currentNote = currentNotes[newIndex];
+            } else if (type === typeCategory) {
+                currentScreen.categoryIndex = newIndex;
+                currentScreen.noteIndex = 0;
+                currentScreen.currentCategory = categories[newIndex];
+                currentScreen.currentNote = categories[newIndex].notes[0];
             }
             
             // Update the screen

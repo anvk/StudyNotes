@@ -42,14 +42,22 @@
             mainView = studyNotes.mainView({
                 container: core.mainViewContainer,
                 notesViewContainer: $(".noteViews"),
-                noteViewContainer: $(".noteView"),
                 noteInfoPopup: noteInfoPopup,
                 controlPanel: controlPanel,
                 currentScreen: core.currentScreen,
                 categories: core.categories,
                 strings: {
                     notePath: config.globals.notePath,
-                    noteExtension: config.globals.noteExtension
+                    noteExtension: config.globals.noteExtension,
+                    types: {
+                        category: "category",
+                        note: "note"
+                    }
+                },
+                styles: {
+                    noteView: "noteView",
+                    noteImage: "noteImage",
+                    activeNote: "activeNote"
                 }
             });
 
