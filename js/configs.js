@@ -10,11 +10,7 @@ studyNotes.config = {
         notePath: "notes/",
         imagePath: "images/",
         imageExtension: ".png",
-        noteExtension: ".png",
-        debugConfig: {
-            width: "1024px",
-            height: "600px"
-        }
+        noteExtension: ".png"
     },
     categories: [
         {
@@ -791,8 +787,12 @@ studyNotes.config = {
     },
     // Active state of the program
     currentState: {
-        debug: true,            // Debug flag (might need it or not)
         fullVersion: true,      // Indication if the app is the support version
+        debugConfig: {
+            width: "1024px",
+            height: "600px",
+            debug: true
+        },
         currentScreen : {       // Structure which tells us what is the current note
             categoryIndex: 0,
             noteIndex: 0,

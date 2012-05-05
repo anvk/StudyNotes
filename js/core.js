@@ -13,18 +13,25 @@
     window.appBootstrap = function () {
 
         var config = studyNotes.config,
-            core = studyNotes.core(config),
+            
+            core = studyNotes.core({
+                debug: config.currentState.debug,
+                currentScreen: config.currentState.currentScreen,
+                categories: config.categories,
+                debugConfig: config.currentState.debugConfig,
+                mainViewContainer: $(".mainView")
+            }),
             
             controlPanel = studyNotes.controlPanel({
                 container: $(".controlPanel"),
                 slideImageButtonClass: "slideButtonImage",
                 strings: {
-                    slideImageButtonSlideOut: "".concat(config.globals.imagePath, "slideOut", config.globals.noteExtension),
-                    slideImageButtonSlideIn: "".concat(config.globals.imagePath, "slideIn", config.globals.noteExtension)
+                    slideImageButtonSlideOut: "images/slideOut.png",
+                    slideImageButtonSlideIn: "images/slideIn.png"
                 }
             }),
             
-            noteInfoPopup = studyNotes.noteInfoPopup({ 
+            noteInfoPopup = studyNotes.noteInfoPopup({
                 container: $(".noteInfoPopup"),
                 delayShow: 2000,
                 delayHide: 2000,
@@ -33,17 +40,26 @@
             }),
             
             mainView = studyNotes.mainView({
-                container: $(".mainView"),
+                container: core.mainViewContainer,
                 notesViewContainer: $(".noteViews"),
+                noteViewContainer: $(".noteView"),
                 noteInfoPopup: noteInfoPopup,
-                controlPanel: controlPanel
-            }, config);
+                controlPanel: controlPanel,
+                currentScreen: core.currentScreen,
+                categories: core.categories,
+                strings: {
+                    notePath: config.globals.notePath,
+                    noteExtension: config.globals.noteExtension
+                }
+            });
 
         noteInfoPopup.showPopup(config.currentState.currentScreen);
     };
 
     studyNotes.core = function (config) {
         var that = {};
+        
+        that = $.extend(config, that);
         
         // Function which will be called right before returning that
         that.initComponent = function() {
@@ -58,26 +74,26 @@
             // Remove JQuery loading page
             $(".ui-loader").css({ "display": "none" });
             $(".ui-page").css({ "min-height": "550px" });
-
-            var currentScreen = config.currentState.currentScreen;
             
+            var currentScreen = that.currentScreen;
             if (!currentScreen.currentCategory) {
-                config.currentState.currentScreen.currentCategory = config.categories[currentScreen.categoryIndex];
+                that.currentScreen.currentCategory = that.categories[currentScreen.categoryIndex];
             }
             
             if (!currentScreen.currentNote) {
-                config.currentState.currentScreen.currentNote = currentScreen.currentCategory.notes[currentScreen.noteIndex];
+                that.currentScreen.currentNote = currentScreen.currentCategory.notes[currentScreen.noteIndex];
             }
         };
         
         // Function which sets interaction and view of the app to test in a browser
         that.setDebug = function() {
-            if (!config.currentState.debug) {
+            var debugConfig = that.debugConfig;
+            
+            if (!debugConfig.debug) {
                 return;
             }
 
-            var debugConfig = config.globals.debugConfig;
-            $(".mainView").css({
+            that.mainViewContainer.css({
                 height: debugConfig.height,
                 width: debugConfig.width
             });

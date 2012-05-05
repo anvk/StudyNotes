@@ -10,7 +10,7 @@
     "use strict";
 
     // constructor
-    studyNotes.controlPanel = function (config, stuff) {
+    studyNotes.controlPanel = function (config) {
         
         // Main variables
         var that = {

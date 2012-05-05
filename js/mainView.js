@@ -10,7 +10,7 @@
     "use strict";
 
     // constructor
-    studyNotes.mainView = function (config, stuff) {
+    studyNotes.mainView = function (config) {
         
         // Main variables
         var that = {};
@@ -33,7 +33,7 @@
                     next: true
                 });
                 
-                that.noteInfoPopup.showPopup(stuff.currentState.currentScreen);
+                that.noteInfoPopup.showPopup(that.currentScreen);
                 that.controlPanel.slideIn();
             });
     
@@ -44,7 +44,7 @@
                     next: false
                 });
                 
-                that.noteInfoPopup.showPopup(stuff.currentState.currentScreen);
+                that.noteInfoPopup.showPopup(that.currentScreen);
                 that.controlPanel.slideIn();
             });
     
@@ -55,7 +55,7 @@
                     next: false
                 });
                 
-                that.noteInfoPopup.showPopup(stuff.currentState.currentScreen);
+                that.noteInfoPopup.showPopup(that.currentScreen);
                 that.controlPanel.slideIn();
             });
     
@@ -66,21 +66,21 @@
                     next: true
                 });
                 
-                that.noteInfoPopup.showPopup(stuff.currentState.currentScreen);
+                that.noteInfoPopup.showPopup(that.currentScreen);
                 that.controlPanel.slideIn();
             });
         };
         
         // Function which creates UI markup with notes based on the stuff
         that.loadNotes = function() {
-            var globals = stuff.globals;
-            $.each(stuff.categories, function (i, category) {
+            var strings = that.strings;
+            $.each(that.categories, function (i, category) {
 
                 // Add a selection of the category here to somewhere
                 $.each(category.notes, function (j, note) {
                     // Create a div with a centered and scaled image inside
                     var noteView = $("<div />").append($("<img />")
-                                               .attr("src", "".concat(globals.notePath, category.name,"/", note.name, globals.noteExtension))
+                                               .attr("src", "".concat(strings.notePath, category.name,"/", note.name, strings.noteExtension))
                                                .addClass("noteImage"));
                     // Add a class for every note so that we can find any note we want later on
                     that.notesViewContainer.append(noteView.addClass("".concat("noteView category-", category.name, "-", note.name)));
@@ -91,10 +91,9 @@
         // Function which hides all notes and shows only an active one
         that.showCurrentScreen = function() {
             var noteViewSelector = ".noteView";
-            var currentScreen = stuff.currentState.currentScreen;
 
-            var activeCategoryName = stuff.categories[currentScreen.categoryIndex].name;
-            var activeNoteName = stuff.categories[currentScreen.categoryIndex].notes[currentScreen.noteIndex].name;
+            var activeCategoryName = that.categories[that.currentScreen.categoryIndex].name;
+            var activeNoteName = that.categories[that.currentScreen.categoryIndex].notes[that.currentScreen.noteIndex].name;
 
             $(noteViewSelector).removeClass("activeNote");
 
@@ -118,18 +117,17 @@
             data.type = (data.type === undefined) ? "" : data.type;
             data.next = (data.next === undefined) ? true : data.next;
             
-            var currentScreen = stuff.currentState.currentScreen;
             var index = 0;
             var maxIndex = 0;
             var newIndex = 0;
             
             // Get current index and max screen numbers depending on type
             if (data.type === "note") {
-                index = currentScreen.noteIndex;
-                maxIndex = stuff.categories[currentScreen.categoryIndex].notes.length - 1;
+                index = that.currentScreen.noteIndex;
+                maxIndex = that.categories[that.currentScreen.categoryIndex].notes.length - 1;
             } else if (data.type === "category") {
-                index = currentScreen.categoryIndex;
-                maxIndex = stuff.categories.length - 1;
+                index = that.currentScreen.categoryIndex;
+                maxIndex = that.categories.length - 1;
             }
             
             // Calculate next item in the sequence. Remember that we are not stoping at the max and moving to 0
@@ -141,15 +139,15 @@
             
             // Update current state
             if (data.type === "note") {
-                stuff.currentState.currentScreen.noteIndex = newIndex;
+                that.currentScreen.noteIndex = newIndex;
                 
-                stuff.currentState.currentScreen.currentNote = stuff.categories[currentScreen.categoryIndex].notes[newIndex];
+                that.currentScreen.currentNote = that.categories[that.currentScreen.categoryIndex].notes[newIndex];
             } else if (data.type === "category") {
-                stuff.currentState.currentScreen.categoryIndex = newIndex;
-                stuff.currentState.currentScreen.noteIndex = 0;
+                that.currentScreen.categoryIndex = newIndex;
+                that.currentScreen.noteIndex = 0;
                 
-                stuff.currentState.currentScreen.currentCategory = stuff.categories[newIndex];
-                stuff.currentState.currentScreen.currentNote = stuff.categories[newIndex].notes[0];
+                that.currentScreen.currentCategory = that.categories[newIndex];
+                that.currentScreen.currentNote = that.categories[newIndex].notes[0];
             }
             
             // Update the screen
